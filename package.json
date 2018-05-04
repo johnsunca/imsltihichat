@@ -1,0 +1,17 @@
+{
+  "name": "SUPPORT_LTI",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.2.6",
+    "jade": "*",
+    "body-parser": "^1.18.2",
+    "ims-lti": "^3.0.2",
+    "jsonwebtoken": "^8.0.1",
+    "lodash": "^4.17.4",
+    "pug": "^2.0.0-rc.4"
+  }
+}
