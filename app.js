@@ -1,4 +1,5 @@
 /*jshint sub:true*/
+console.log('\nin app 0');
 var https = require('http');
 var fs = require('fs');
 var express = require('express');
@@ -10,6 +11,7 @@ var bodyParser  = require('body-parser');
 var ltiKey = "mykeyagain";
 var ltiSecret = "mysagain";
 
+console.log('\nin app 1');
 app.engine('pug', require('pug').__express);
 
 app.use(express.bodyParser());
@@ -20,8 +22,11 @@ app.set('view engine', 'pug');
 
 app.post('/launch_lti', function(req, res, next){
  
+console.log('\nin app 2');
   req.body = _.omit(req.body, '__proto__');
   	if (req.body['oauth_consumer_key']===ltiKey){
+		
+console.log('\nin app 3');
   		var provider = new lti.Provider(ltiKey, ltiSecret);
   	   //Check is the Oauth  is valid.
   			provider.valid_request(req, function (err, isValid){
@@ -31,6 +36,8 @@ app.post('/launch_lti', function(req, res, next){
 			      
   				}
   				else {
+					
+console.log('\nin app 4');
 			      if (!isValid) {
 			        console.log('\nError: Invalid LTI launch.');
 			        res.status(500).send({ error: "Invalid LTI launch" });
