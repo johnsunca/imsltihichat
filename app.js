@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 
 //Setup the http server
-var server = https.createServer(app).listen(process.env.PORT || 80, function(){ //publish to heroku
+var server = https.createServer(app).listen(process.env.PORT || 3000, function(){ //publish to heroku
   console.log("https server started");
 });
 //server.listen(process.env.OPENSHIFT_NODEJS_PORT || 3000);//publish to openshift
