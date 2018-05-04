@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 app.set('view engine', 'pug');
 
 app.post('/launch_lti', function(req, res, next){
- 
+app.use('/', express.static(__dirname + '/www')); 
   req.body = _.omit(req.body, '__proto__');
   	if (req.body['oauth_consumer_key']===ltiKey){
   		var provider = new lti.Provider(ltiKey, ltiSecret);
@@ -50,9 +50,9 @@ app.post('/launch_lti', function(req, res, next){
 			         } 
 			      else {
 		        	  //User is Auth so pass back when ever we need.
-			    	  //res.render('start', { title: 'LTI SETTINGS', CourseID: 'CourseID: '+req.body['context_id'], userID: 'UserID: '+req.body['user_id'], UserRole: 'Course Role: '+req.body['roles'], FulllogTitle: 'Full Log: ', Fulllog: JSON.stringify(req.body) });
+			    	  res.render('start', { title: 'LTI SETTINGS', CourseID: 'CourseID: '+req.body['context_id'], userID: 'UserID: '+req.body['user_id'], UserRole: 'Course Role: '+req.body['roles'], FulllogTitle: 'Full Log: ', Fulllog: JSON.stringify(req.body) });
 					  //specify the html we will use
-					  app.use('/', express.static(__dirname + '/www'));
+					 // app.use('/', express.static(__dirname + '/www'));
 					  
 			}}
 	   });
